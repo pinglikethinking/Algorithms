@@ -6,6 +6,43 @@
 </head>
 <body>
 <center><h1>随机生成n个min-max的不重复的数字，对这组数字进行排序</h1></center>
-<script type="text/javascript" src="js/sortSelectFromRandom.js"></script>
+<script type="text/javascript">
+	/*
+主函数，调用sortArry(n)，n为要生成的个数
+*/
+function sortArry(n,min,max){
+	if(n>max-min+1){
+		return ("对不起您传入的数字太大，请传入小于" + (max-min+2) + "（即n<max-min+2）的数");
+	}
+	//在满足传参合理的情况下再初始化
+	var arr=[],
+		has={},
+		elem=0;
+	for(var i=0;i<n;){
+		elem=selectFrom(min,max);//调用封装函数随机生成一个[lower,upper]区间的数字
+		//判断是否存在elem，满足条件则插入并记入对象中
+		if(!has[elem]){
+			arr.push(elem);
+			i++;
+			has[elem]=true;
+		}
+	}
+	arr.sort(compare);
+	return arr;
+}
+/*
+随机生成一个正整数
+ */
+function selectFrom(lower,upper){
+	var choices=upper-lower+1;
+	return Math.floor(Math.random()*choices+lower);
+}
+/*
+比较两个数值大小
+ */
+function compare(val1,val2){
+	return val1-val2;
+}
+</script>
 </body>
 </html>
