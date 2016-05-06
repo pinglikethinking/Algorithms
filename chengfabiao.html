@@ -13,6 +13,23 @@
 顺次非递减得到第四个值为4；
 设计一个算法，n*m第K位置的值
 </h1>
-<script type="text/javascript" src="js/chengfabiao.js"></script>
+<script type="text/javascript">
+	function caculate(n,m,k){
+	var result=[];
+	var p=0;
+	var a=[];
+	for(var i=0;i<n;i++){
+		a[i]=[];
+		for(var j=0;j<m;j++){
+			a[i][j]=(i+1)*(j+1);
+			if(i<=j){
+				result[p]=a[i][j];
+				p++;
+			}
+		}
+	}
+	console.log(result[k-1]);
+}
+</script>
 </body>
 </html>
